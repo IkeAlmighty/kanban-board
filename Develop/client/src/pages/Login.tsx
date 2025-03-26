@@ -24,6 +24,7 @@ const Login = () => {
       Auth.login(data.token);
     } catch (err) {
       console.error('Failed to login', err);
+      alert(err);
     }
   };
 
@@ -32,14 +33,14 @@ const Login = () => {
       <form className='form' onSubmit={handleSubmit}>
         <h1>Login</h1>
         <label >Username</label>
-        <input 
+        <input
           type='text'
           name='username'
           value={loginData.username || ''}
           onChange={handleChange}
         />
-      <label>Password</label>
-        <input 
+        <label>Password</label>
+        <input
           type='password'
           name='password'
           value={loginData.password || ''}
@@ -48,7 +49,7 @@ const Login = () => {
         <button type='submit'>Submit Form</button>
       </form>
     </div>
-    
+
   )
 };
 

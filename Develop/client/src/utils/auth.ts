@@ -2,19 +2,20 @@ import { JwtPayload, jwtDecode } from "jwt-decode";
 
 class AuthService {
   getProfile() {
-    // TODO: return the decoded token
+    // return the decoded token
     const token = this.getToken();
-    const decoded = jwtDecode(token);
+    const decoded: JwtPayload = jwtDecode(token);
+    return decoded;
   }
 
   loggedIn() {
-    // TODO: return a value that indicates if the user is logged in
+    // return a value that indicates if the user is logged in
     const token = localStorage.getItem("authToken");
     return !!token;
   }
 
   isTokenExpired(token: string) {
-    // TODO: return a value that indicates if the token is expired
+    // return a value that indicates if the token is expired
     const decoded = jwtDecode(token);
 
     const validDuration = 1000 * 60 * 60 * 24 * 30; // 30 days
@@ -23,7 +24,7 @@ class AuthService {
   }
 
   getToken(): string {
-    // TODO: return the token
+    // return the token
     const token = localStorage.getItem("authToken");
 
     if (!token) {
@@ -43,9 +44,9 @@ class AuthService {
   }
 
   logout() {
-    // TODO: remove the token from localStorage
+    // remove the token from localStorage
     localStorage.removeItem("authToken");
-    // TODO: redirect to the login page
+    // redirect to the login page
     window.location.href = "/";
   }
 }

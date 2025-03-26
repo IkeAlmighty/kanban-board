@@ -4,15 +4,18 @@ This project is a full-stack Kanban board application that uses JSON Web Tokens 
 
 ## Deployment and Github Link
 
-🔗 TODO: Deployed Application URL
+🔗 [Deployed Application](https://kanban-board-46h5.onrender.com)
 
-🔗 TODO: Live Application URL
+🔗 [Github](https://github.com/IkeAlmighty/kanban-board)
 
 ## Screenshots
 
-TODO: Login Page
+### Login Page
+![Login Page Screenshot](Assets/login.png)
 
-TODO: Main Kanban Board
+### Kanban Board
+![Kanban Page Screenshot](Assets/kanban.png)
+
 
 ## Features
 

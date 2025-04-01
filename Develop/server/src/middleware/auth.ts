@@ -8,19 +8,31 @@ interface JwtPayload {
   username: string;
 }
 
+function parseAuthToken(header: string | undefined) {
+  if (!header || !header.startsWith('Bearer ')) return null;
+
+  return header.split(' ')[1];
+}
+
 export const authenticateToken = (
   req: Request,
   res: Response,
   next: NextFunction
 ) => {
   // verify the token exists and add the user data to the request object
-  const { authToken } = req.body;
+  const authHeader = req.headers.authorization;
+  const authToken = parseAuthToken(authHeader);
+  if (!authToken) {
+    res.redirect("/login"); // redirects to client side login page
+    return;
+  }
+
   const user = jwt.verify(authToken, JWT_SECRET_KEY) as JwtPayload;
   if (!user) {
     res.redirect("/login"); // redirects to client side login page
     return;
-  } else {
-    req.user = user;
-    next();
   }
+
+  req.user = user;
+  next();
 };

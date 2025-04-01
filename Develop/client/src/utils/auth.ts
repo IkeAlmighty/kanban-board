@@ -26,7 +26,6 @@ class AuthService {
   getToken(): string {
     // return the token
     const token = localStorage.getItem("authToken");
-
     if (!token) {
       this.logout();
       window.location.href = "/login";
